@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
             <div id="tabs" style="display:block; width:100% !important;">
                 <div class="panel-heading">HOW TO USE TOURSYS CONNECT</div>
                 <div>
-                        <img class="panel-logo" src="<?php print plugin_dir_url(dirname( __FILE__ )) . 'images/toursys-logo.png'; ?>"/>
+                        <img class="panel-logo" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/toursys-logo.png'; ?>"/>
                 </div>
                 <ul style="padding-left:12px; padding-right:12px;">
                     <li><a href="#tabs-tour">For your Tour Products</a></li>
@@ -117,9 +117,9 @@ jQuery(document).ready(function($) {
                                 </td>
                                 <td width="40%">
                                     
-                                    <img style="width:400px;" src="<?php print plugins_url('/toursys/admin/images/example-setting.png', __DIR__); ?>"/>
+                                    <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-setting.png'; ?>"/>
                                     <br>
-                                    <img style="width:400px;" src="<?php print plugins_url('/toursys/admin/images/example-form-tour.png', __DIR__); ?>"/>
+                                    <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-form-tour.png'; ?>"/>
 
                                 </td>
                             </tr>
@@ -236,9 +236,9 @@ jQuery(document).ready(function($) {
                                 <p>the default-date parameter is NOT supported in the short code for transfer-booking-button or transfer-booking-form.</p>
                                 </td>
                                 <td width="40%">
-                                    <img style="width:400px;" src="<?php print plugins_url('/toursys/admin/images/example-setting.png', __FILE__); ?>"/>
+                                    <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-setting.png'; ?>"/>
                                     <br>
-                                        <img style="width:400px;" src="<?php print plugins_url('/toursys/admin/images/example-form-transfer.png', __FILE__); ?>"/>
+                                        <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-form-transfer.png'; ?>"/>
 
                                 </td>
                             </tr>

@@ -60,7 +60,7 @@ label {
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<img class="panel-logo"
-						src="<?php print plugin_dir_url(dirname( __FILE__ )) . 'images/toursys-logo.png'; ?>" />
+						src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/toursys-logo.png'; ?>" />
 					TourSys Connect Setting
 
 				</div>
