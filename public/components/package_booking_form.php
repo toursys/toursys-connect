@@ -1,13 +1,11 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+
 
 $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_ENGINE_URL_DEV : TOURSYS_BOOKING_ENGINE_URL);
 ?>
 <div id="toursys" class="toursys-connect">
 
-<form id="toursys-form" class="toursys-form" action="<?php echo esc_url($tsbeUrl . "tours/booking.php"); ?>"  method="get" style="display:block; position:relative; width:100%;  max-width:500px !important; border:0px; background-color:none; padding:0px; margin-bottom:20px;">
+<form id="toursys-form" class="toursys-form" action="<?php echo esc_url($tsbeUrl . "packages/booking.php"); ?>"  method="get" style="display:block; position:relative; width:100%;  max-width:500px !important; border:0px; background-color:none; padding:0px; margin-bottom:20px;">
 
 	<div id="overlay" class="overlay">
       <div class="cv-spinner">
@@ -28,9 +26,9 @@ $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_
     		<div class="col">
     			<label style="color: <?php print esc_attr($textColor); ?> !important;">Trip Date: </label>
                 <?php if($isDefaultDate == 1){ ?>
-                    <input type="text" class="toursys-tour-trip-date" value="<?php echo esc_attr($defaultDate);?>" name="trip-date" id="toursys-tour-trip-date" placeholder="Trip Date" readonly="true" required="required" disabled="disabled"  />
+                    <input type="text" class="toursys-package-trip-date" value="<?php echo esc_attr($defaultDate);?>" name="trip-date" id="toursys-package-trip-date" placeholder="Trip Date" readonly="true" required="required" disabled="disabled"  />
                 <?php }else { ?>
-    			    <input type="text" class="toursys-datepicker toursys-tour-trip-date" value="<?php echo esc_attr($defaultDate);?>"  name="trip-date" id="toursys-tour-trip-date" placeholder="Trip Date" readonly="true" required="required" />
+    			    <input type="text" class="toursys-datepicker toursys-package-trip-date" value="<?php echo esc_attr($defaultDate);?>"  name="trip-date" id="toursys-package-trip-date" placeholder="Trip Date" readonly="true" required="required" />
     		    <?php } ?>
             </div>
     	</div>
@@ -38,7 +36,7 @@ $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_
     		<div class="col">
     			<label style="color: <?php print esc_attr($textColor); ?> !important;">No. of Adults: </label>
 
-        			<select name="adults" id="toursys-tour-adults" class="toursys-tour-adults">
+        			<select name="adults" id="toursys-package-adults" class="toursys-package-adults">
         				<?php
             				for($i = 1; $i <= $maxAdults; $i++){
                                 if($i == $defaultAdults){
@@ -57,7 +55,7 @@ $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_
     		<div class="col">
     			<label style="color: <?php print esc_attr($textColor); ?> !important;">No. of Children: </label>
 
-        			<select name="children" id="toursys-tour-children" class="toursys-tour-children">
+        			<select name="children" id="toursys-package-children" class="toursys-package-children">
         				<?php
             				for($i = 0; $i <= $maxChildren; $i++){
 				                if($i == $defaultChildren) {
@@ -77,10 +75,10 @@ $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_
     	<div class="wrap">
     		<div class="col">
     			<?php /*<input type="hidden" id="toursys-api-key" name="key" value="<?php print $GLOBALS['toursys-api-key']; ?>" />*/?>
-                <input type="hidden" id="toursys-product-type" class="toursys-product-type" value="TOUR">
-    			<input type="hidden" id="toursys-tour-product-id" class="toursys-tour-product-id" name="product-id" value="<?php echo esc_attr($productId); ?>" />
-				<input type="hidden" id="toursys-tour-max-adults" class="toursys-tour-max-adults" name="max-adults" value="<?php echo esc_attr($maxAdults); ?>" />
-				<input type="hidden" id="toursys-tour-max-children" class="toursys-tour-max-children" name="max-children" value="<?php echo esc_attr($maxChildren); ?>" />
+                <input type="hidden" id="toursys-product-type" class="toursys-product-type" value="PACKAGE">
+    			<input type="hidden" id="toursys-package-product-id" class="toursys-package-product-id" name="product-id" value="<?php echo esc_attr($productId); ?>" />
+				<input type="hidden" id="toursys-package-max-adults" class="toursys-package-max-adults" name="max-adults" value="<?php echo esc_attr($maxAdults); ?>" />
+				<input type="hidden" id="toursys-package-max-children" class="toursys-package-max-children" name="max-children" value="<?php echo esc_attr($maxChildren); ?>" />
                 <input type="hidden" id="toursys-key" class="toursys-key" name="key" value="<?php print get_option("toursys-api-token");?>">
     			<button type="button" id="toursys-submit" class="toursys-button toursys-submit toursys-booking-button" style="background-color:<?php echo esc_attr($foreColor); ?>;  color: <?php echo esc_attr($buttonTextColor); ?> !important;" id="toursys-booking-button"><?php echo esc_attr($buttonText); ?></button>
     		</div>

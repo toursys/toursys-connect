@@ -1,10 +1,10 @@
 <?php
 /*
  * Plugin Name: TourSys Connect
- * Plugin URI: https://www.toursys.asia/wp
+ * Plugin URI: https://www.toursys.asia
  * Description: TourSys plugins to enable shortcodes for booking button and booking forms
- * Version: 1.2.5
- * Author: TourSys Development Team
+ * Version: 1.2.8
+ * Author: TourSys
  * Author URI: https://www.toursys.asia
  * License: GPL2
  */
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts','TourSysPlugin::include_css_js');
 class TourSysPlugin
 {
 
-    const VERSION           = '1.2.5';
+    const VERSION           = '1.2.8';
     const PLUGIN_ID         = 'toursys';
     const CREDENTIAL_ACTION = self::PLUGIN_ID . '-nonce-action';
     const CREDENTIAL_NAME   = self::PLUGIN_ID . '-nonce-key';

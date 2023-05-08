@@ -104,6 +104,25 @@ jQuery(function($){
 
 
 			}
+			else if(productType == "PACKAGE"){
+
+				let adults = $(currentForm).find('.toursys-package-adults').val();
+				let childs = $(currentForm).find('.toursys-package-children').val();
+				let productId = $(currentForm).find('.toursys-package-product-id').val();
+				let maxAdults = $(currentForm).find('.toursys-package-max-adults').val();
+				let maxChilds = $(currentForm).find('.toursys-package-max-children').val();
+				let tripDate = $(currentForm).find('.toursys-package-trip-date').val();
+
+				params = {
+					"productId" : productId,
+					"adults" : adults,
+					"children" : childs,
+					"maxAdults" : maxAdults,
+					"maxChildren" : maxChilds,
+					"tripDate" : tripDate
+				};
+
+			}
 
 			window.location.href = tsbeUrl + "?q=" + paramEncode(JSON.stringify(params)) + "&key=" + toursysKey;
 			// $(currentForm).children("#toursys-form").submit();

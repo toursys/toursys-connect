@@ -17,6 +17,7 @@ jQuery(document).ready(function($) {
                 <ul style="padding-left:12px; padding-right:12px;">
                     <li><a href="#tabs-tour">For your Tour Products</a></li>
                     <li><a href="#tabs-transfer">For your Transfer Products</a></li>
+                    <li><a href="#tabs-package">For your Package Products</a></li>
                 </ul>
 
                
@@ -247,6 +248,111 @@ jQuery(document).ready(function($) {
                     </div>
                 </div>
 
+                <div id="tabs-package" class="panel-success">
+
+                    <div class="panel-body">
+                        <p class="font-heavy text-orange">Booking Button [package-booking-button]</p>
+                        <p>The Package Booking Button shortcode displays a button on your webpage with a link to the TourSys Connect Booking page.</p>
+
+                        <br>
+                        <p class="font-heavy mb10">Sample Shortcode</p>
+                        <code style="display: block; white-space:pre-line; line-height: normal; width:260px; !important; padding-left:20px; padding-bottom:20px;">
+                            [package-booking-button
+                            product-id="486"
+                            button-text="Book Now"
+                            primary-color="#6699CC"
+                            secondary-color="#6699FF"
+                            default-adults="2"
+                            default-children="0"
+                            default-date="DD/MM/YYYY"
+                            ]
+                        </code>
+                        <br>
+                        <br>
+                        <p class="font-heavy mb10">Available parameters</p>
+                        <p class="parameter">product-id <span class="required">Required</span></p>
+                        <p>ID of the package product to be booked in TourSys</p>
+                        <p class="parameter">button-text <span class="required">Required</span></p>
+                        <p>Text displayed on booking button.</p>
+                        <p class="parameter">primary-color</p>
+                        <p>Background color of button.</p>
+                        <p class="parameter">secondary-color</p>
+                        <p>Background color button when hovering.</p>
+                        <p class="parameter">default-adults</p>
+                        <p>Pre-selected number of adults upon landing on booking page.</p>
+                        <p class="parameter">default-children</p>
+                        <p>Pre-selected number of children upon landing on booking page.</p>
+                        <p class="parameter">default-date</p>
+                        <p>Fix the date sent to the booking page so the package can only be booked for that exact date. Useful for collective packages which begin on a specific date. Note that the date format must be Day, Month, Year:  DD/MM/YYYY (eg:  25/12/2022).</p>
+
+
+                        <hr class="hr">
+
+
+                        <p class="font-heavy text-orange">Booking Form [package-booking-form]</p>
+                        <p>The Package Booking Form shortcode displays a form on your webpage with a link to the TourSys Connect Booking page.</p>
+                        <br>
+                        <p class="font-heavy mb10">Sample Shortcode</p>
+                        <code style="display: block; white-space:pre-line; line-height: normal; width:260px; !important; padding-left:20px; padding-bottom:20px;">
+                            [package-booking-form
+                            product-id="486"
+                            button-text="Book Now"
+                            default-adults="2"
+                            default-children="0"
+                            default-date="DD/MM/YYYY"
+                            max-adults="6"
+                            max-children="4"
+                            primary-color="#6699CC"
+                            secondary-color="#6699FF"
+                            header-text="Make Booking Now"
+                            text-color="#000000"
+                            button-text-color="#ffffff"
+                            ]
+                        </code>
+                        <br>
+                        <br>
+                        <table style="display:block; width:100%">
+                            <tr>
+                                <td width="60%" style="vertical-align: top;">
+                                    <p class="font-heavy mb10">Available parameters</p>
+                                    <p class="parameter">product-id <span class="required">Required</span></p>
+                                    <p>ID of the package product to be booked in TourSys</p>
+                                    <p class="parameter">button-text <span class="required">Required</span></p>
+                                    <p>Text displayed on booking button.</p>
+                                    <p class="parameter">default-adults</p>
+                                    <p>Pre-selected number of adults upon landing on booking page.</p>
+                                    <p class="parameter">default-children</p>
+                                    <p>Pre-selected number of children upon landing on booking page.</p>
+                                    <p class="parameter">default-date</p>
+                                    <p>Fix the date sent to the booking page so the package can only be booked for that exact date. Useful for collective packages which begin on a specific date. Note that the date format must be Day, Month, Year:  DD/MM/YYYY (eg:  25/12/2022).</p>
+                                    <p class="parameter">max-adults</p>
+                                    <p>Max number of adults user can input</p>
+                                    <p class="parameter">max-children</p>
+                                    <p>Max number of children user can input.</p>
+                                    <p class="parameter">header-text</p>
+                                    <p>Text displayed at the top of the form.</p>
+                                    <p class="parameter">primary-color</p>
+                                    <p>Background color of button.</p>
+                                    <p class="parameter">secondary-color</p>
+                                    <p>Background color of button when hovering.</p>
+                                    <p class="parameter">text-color</p>
+                                    <p>Color of text on form label.</p>
+                                    <p class="parameter">button-text-color</p>
+                                    <p>Color of text on button.</p>
+
+                                </td>
+                                <td width="40%">
+
+                                    <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-setting.png'; ?>"/>
+                                    <br>
+                                    <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-form-tour.png'; ?>"/>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
 
 
             </div>

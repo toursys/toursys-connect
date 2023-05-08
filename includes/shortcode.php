@@ -1,9 +1,13 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 
 $toursysApiParams = array("key" => get_option('toursys-api-key'), "system" => "TOURSYS");
 $toursysApiUrl = (strpos(get_option("home"),  DEV_WEBSITE) !== false ? "https://api-v3.dev.toursys.asia/" : TOURSYS_API_URL);
 
-//$response = callAPI("GET", $apiUrl, $apiParams);
+//$response = callAPI("GET", $toursysApiUrl, $toursysApiParams);
 $toursysResponse = array();
 $toursysGetToken = "";
 
@@ -25,9 +29,48 @@ if(!empty($toursysGetToken)){
     }
 }
 
+// dd($getToken);
+
+//function callAPI($method, $url, $data = false){
+//
+//
+//    $curl = curl_init();
+//
+//    switch ($method)
+//    {
+//        case "POST":
+//            curl_setopt($curl, CURLOPT_POST, 1);
+//
+//            if ($data)
+//                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+//            break;
+//        case "PUT":
+//            curl_setopt($curl, CURLOPT_PUT, 1);
+//            break;
+//        default:
+//            if ($data)
+//                $url = sprintf("%s?%s", $url, http_build_query($data));
+//    }
+//
+//
+//    curl_setopt($curl, CURLOPT_URL, $url);
+//    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+//
+//    $result = curl_exec($curl);
+//
+//    curl_close($curl);
+//
+//    var_dump($url);
+//
+//
+//    return $result;
+//
+//}
+
 function toursysParamEncode($data){
 
-    return randomString() . base64_encode($data) . randomString();
+    return toursysRandomString() . base64_encode($data) . toursysRandomString();
+
 }
 
 function toursysParamDecode($data){
@@ -53,10 +96,12 @@ function toursysRandomString($length = 1) {
 // Tour
 function toursys_create_tour_booking_button($atts = array(), $content = null, $tag = ''){
 
-    foreach($atts as $key => $value){
-        $atts[$key] = sanitize_text_field(strip_tags($value));
-    }
 
+    if(is_array($atts)) {
+        foreach ($atts as $key => $value) {
+            $atts[$key] = sanitize_text_field(strip_tags($value));
+        }
+    }
 
     $attributes = shortcode_atts(
         array(
@@ -75,7 +120,6 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
         $atts
      );
 
-
     $productId = $attributes['product-id'];
     $buttonText = $attributes['button-text'];
 
@@ -83,13 +127,11 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
     $defaultChildren  = $attributes['default-children'];
     $defaultDate = $attributes['default-date'];
 
-
     $backgroundColor = get_option("toursys-secondary-color");
     $textFont = get_option("toursys-text-font");
     $foreColor = get_option("toursys-primary-color");
     $textColor = get_option("toursys-text-color");
     $buttonTextColor = get_option("toursys-button-text-color");
-
 
     if($attributes['default-adults'] == ""){
         $defaultAdults = 2;
@@ -103,7 +145,6 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
         $defaultDate = date("d/m/Y", strtotime("+7 day"));
     }
 
-
     if($attributes['secondary-color'] != ""){
         $backgroundColor = $attributes['secondary-color'];
     }
@@ -116,14 +157,10 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
         $textFont = $attributes['text-font'];
     }
 
-
-
-
     if($attributes['button-text-color'] != ""){
         $buttonTextColor = $attributes['button-text-color'];
     }
 
-    
 
 
     ob_start();
@@ -131,13 +168,14 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
     $output = ob_get_clean();
     return $output;
 
-
 }
 
 function toursys_create_tour_booking_form($atts = array(), $content = null, $tag = ''){
 
-    foreach($atts as $key => $value){
-        $atts[$key] = sanitize_text_field(strip_tags($value));
+    if(is_array($atts)) {
+        foreach ($atts as $key => $value) {
+            $atts[$key] = sanitize_text_field(strip_tags($value));
+        }
     }
 
     $attributes = shortcode_atts(
@@ -161,8 +199,6 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
 
     );
 
-
-
     $productId = $attributes['product-id'];
     $buttonText = $attributes['button-text'];
     $headerText = $attributes["header-text"];
@@ -183,7 +219,6 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
     $textColor = get_option("toursys-text-color");
     $buttonTextColor = get_option("toursys-button-text-color");
 
-
     if($attributes['default-adults'] == ""){
         $defaultAdults = 2;
     }
@@ -195,7 +230,6 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
     if($attributes['default-date'] == ""){
         $defaultDate = date("d/m/Y", strtotime("+7 day"));
     }
-
 
     if($attributes['max-adults'] != ''){
         $maxAdults = $attributes['max-adults'];
@@ -221,31 +255,21 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
         $maxChildren = 5;
     }
 
-
-
-
-
     if($attributes['secondary-color'] != ""){
      $backgroundColor = $attributes['secondary-color'];
     }
-
-
 
     if($attributes['primary-color'] != ""){
         $foreColor = $attributes['primary-color'];
     }
 
-
     if($attributes['text-font'] != ""){
         $textFont = $attributes['text-font'];
     }
 
-
     if($attributes['text-color'] != ""){
         $textColor = $attributes['text-color'];
     }
-
-
 
     if($attributes['button-text-color'] != ""){
         $buttonTextColor = $attributes['button-text-color'];
@@ -254,9 +278,6 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
     if($attributes['header-text'] != ""){
         $headerText = $attributes['header-text'];
     }
-
-
-
 
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/tour_booking_form.php");
@@ -268,8 +289,10 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
 // Transfer
 function toursys_create_transfer_booking_button($atts = array(), $content = null, $tag = ''){
 
-    foreach($atts as $key => $value){
-        $atts[$key] = sanitize_text_field(strip_tags($value));
+    if(is_array($atts)) {
+        foreach ($atts as $key => $value) {
+            $atts[$key] = sanitize_text_field(strip_tags($value));
+        }
     }
 
     $attributes = shortcode_atts(
@@ -288,8 +311,7 @@ function toursys_create_transfer_booking_button($atts = array(), $content = null
             'button-text-color' => ""
         ),
         $atts
-     );
-
+    );
 
     $productId = $attributes['product-id'];
     $tripType = $attributes['trip-type'];
@@ -305,13 +327,9 @@ function toursys_create_transfer_booking_button($atts = array(), $content = null
     $textColor = get_option("toursys-text-color");
     $buttonTextColor = get_option("toursys-button-text-color");
 
-
-
     if($attributes['secondary-color'] != ""){
         $backgroundColor = $attributes['secondary-color'];
     }
-
-
 
     if($attributes['primary-color'] != ""){
         $foreColor = $attributes['primary-color'];
@@ -337,19 +355,19 @@ function toursys_create_transfer_booking_button($atts = array(), $content = null
         $buttonTextColor = $attributes['button-text-color'];
     }
 
-
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/transfer_booking_button.php");
     $output = ob_get_clean();
     return $output;
 
-
 }
 
 function toursys_create_transfer_booking_form($atts = array(), $content = null, $tag = ''){
 
-    foreach($atts as $key => $value){
-        $atts[$key] = sanitize_text_field(strip_tags($value));
+    if(is_array($atts)) {
+        foreach ($atts as $key => $value) {
+            $atts[$key] = sanitize_text_field(strip_tags($value));
+        }
     }
 
 
@@ -437,7 +455,6 @@ function toursys_create_transfer_booking_form($atts = array(), $content = null, 
         
     }
 
-
     if($attributes['max-children'] == ""){
 
         if($maxChildren == ""){
@@ -455,17 +472,208 @@ function toursys_create_transfer_booking_form($atts = array(), $content = null, 
         $maxChildren = intval($attributes['max-children']);
     }
 
-
-
     if($attributes['secondary-color'] != ""){
      $backgroundColor = $attributes['secondary-color'];
     }
 
+    if($attributes['primary-color'] != ""){
+        $foreColor = $attributes['primary-color'];
+    }
 
+    if($attributes['text-font'] != ""){
+        $textFont = $attributes['text-font'];
+    }
+
+    if($attributes['text-color'] != ""){
+        $textColor = $attributes['text-color'];
+    }
+
+    if($attributes['button-text-color'] != ""){
+        $buttonTextColor = $attributes['button-text-color'];
+    }
+
+    if($attributes['header-text'] != ""){
+        $headerText = $attributes['header-text'];
+    }
+
+    ob_start();
+    include(plugin_dir_path(dirname(__FILE__))  . "public/components/transfer_booking_form.php");
+    $output = ob_get_clean();
+    return $output;
+
+}
+
+
+// Package
+function toursys_create_package_booking_button($atts = array(), $content = null, $tag = ''){
+
+    if(is_array($atts)) {
+        foreach ($atts as $key => $value) {
+            $atts[$key] = sanitize_text_field(strip_tags($value));
+        }
+    }
+
+    $attributes = shortcode_atts(
+        array(
+            'id' => uniqid(),
+            'product-id' => 0,
+            'button-text' => "Book Now",
+            'default-adults' => "",
+            'default-children' => "",
+            'default-date' => "",
+            'primary-color' => "",
+            'secondary-color' => "",
+            'text-font' => "",
+            'text-color' => "",
+            'button-text-color' => ""
+        ),
+        $atts
+    );
+
+    $productId = $attributes['product-id'];
+    $buttonText = $attributes['button-text'];
+
+    $defaultAdults  = $attributes['default-adults'];
+    $defaultChildren  = $attributes['default-children'];
+    $defaultDate = $attributes['default-date'];
+
+
+    $backgroundColor = get_option("toursys-secondary-color");
+    $textFont = get_option("toursys-text-font");
+    $foreColor = get_option("toursys-primary-color");
+    $textColor = get_option("toursys-text-color");
+    $buttonTextColor = get_option("toursys-button-text-color");
+
+    if($attributes['default-adults'] == ""){
+        $defaultAdults = 2;
+    }
+
+    if($attributes['default-children'] == ""){
+        $defaultChildren = 0;
+    }
+
+    if($attributes['default-date'] == ""){
+        $defaultDate = date("d/m/Y", strtotime("+7 day"));
+    }
+
+    if($attributes['secondary-color'] != ""){
+        $backgroundColor = $attributes['secondary-color'];
+    }
 
     if($attributes['primary-color'] != ""){
         $foreColor = $attributes['primary-color'];
     }
+
+    if($attributes['text-font'] != ""){
+        $textFont = $attributes['text-font'];
+    }
+
+    if($attributes['button-text-color'] != ""){
+        $buttonTextColor = $attributes['button-text-color'];
+    }
+
+    ob_start();
+    include(plugin_dir_path(dirname(__FILE__))  . "public/components/package_booking_button.php");
+    $output = ob_get_clean();
+    return $output;
+
+}
+
+function toursys_create_package_booking_form($atts = array(), $content = null, $tag = ''){
+
+    if(is_array($atts)) {
+        foreach ($atts as $key => $value) {
+            $atts[$key] = sanitize_text_field(strip_tags($value));
+        }
+    }
+
+    $attributes = shortcode_atts(
+        array(
+            'id' => uniqid(),
+            'product-id' => 0,
+            'default-adults' => '',
+            'default-children' => '',
+            'default-date' => "",
+            'max-adults' => '',
+            'max-children' => '',
+            'button-text' => "Book Now",
+            'primary-color' => "",
+            'secondary-color' => "",
+            'text-font' => "",
+            'text-color' => "",
+            'button-text-color' => "",
+            'header-text' => "Book Your Package Today"
+        ),
+        $atts
+
+    );
+
+    $productId = $attributes['product-id'];
+    $buttonText = $attributes['button-text'];
+    $headerText = $attributes["header-text"];
+
+    $defaultAdults  = $attributes['default-adults'];
+    $defaultChildren  = $attributes['default-children'];
+    $defaultDate = $attributes['default-date'];
+    $isDefaultDate = 0;
+
+    if($defaultDate != ""){
+        $isDefaultDate = 1;
+    }
+
+    $maxAdults = get_option("toursys-max-adults");
+    $maxChildren = get_option("toursys-max-children");
+    $backgroundColor = get_option("toursys-secondary-color");
+    $textFont = get_option("toursys-text-font");
+    $foreColor = get_option("toursys-primary-color");
+    $textColor = get_option("toursys-text-color");
+    $buttonTextColor = get_option("toursys-button-text-color");
+
+
+    if($attributes['default-adults'] == ""){
+        $defaultAdults = 2;
+    }
+
+    if($attributes['default-children'] == ""){
+        $defaultChildren = 0;
+    }
+
+    if($attributes['default-date'] == ""){
+        $defaultDate = date("d/m/Y", strtotime("+7 day"));
+    }
+
+    if($attributes['max-adults'] != ''){
+        $maxAdults = $attributes['max-adults'];
+    }
+
+    if($maxAdults == ''){
+        $maxAdults = intval(get_option("toursys-max-adults"));
+    }
+
+    if($maxAdults == ''){
+        $maxAdults = 10;
+    }
+
+    if($attributes['max-children'] != ''){
+        $maxChildren = $attributes['max-children'];
+    }
+
+    if($maxChildren == ''){
+        $maxChildren = intval(get_option("toursys-max-children"));
+    }
+
+    if($maxChildren == ''){
+        $maxChildren = 5;
+    }
+
+    if($attributes['secondary-color'] != ""){
+        $backgroundColor = $attributes['secondary-color'];
+    }
+
+    if($attributes['primary-color'] != ""){
+        $foreColor = $attributes['primary-color'];
+    }
+
 
     if($attributes['text-font'] != ""){
         $textFont = $attributes['text-font'];
@@ -476,8 +684,6 @@ function toursys_create_transfer_booking_form($atts = array(), $content = null, 
         $textColor = $attributes['text-color'];
     }
 
-
-
     if($attributes['button-text-color'] != ""){
         $buttonTextColor = $attributes['button-text-color'];
     }
@@ -486,11 +692,8 @@ function toursys_create_transfer_booking_form($atts = array(), $content = null, 
         $headerText = $attributes['header-text'];
     }
 
-
-
-
     ob_start();
-    include(plugin_dir_path(dirname(__FILE__))  . "public/components/transfer_booking_form.php");
+    include(plugin_dir_path(dirname(__FILE__))  . "public/components/package_booking_form.php");
     $output = ob_get_clean();
     return $output;
 
@@ -501,6 +704,7 @@ add_shortcode("tour-booking-button", "toursys_create_tour_booking_button");
 add_shortcode("tour-booking-form", "toursys_create_tour_booking_form");
 add_shortcode("transfer-booking-button", "toursys_create_transfer_booking_button");
 add_shortcode("transfer-booking-form", "toursys_create_transfer_booking_form");
-
+add_shortcode("package-booking-button", "toursys_create_package_booking_button");
+add_shortcode("package-booking-form", "toursys_create_package_booking_form");
 
 ?>

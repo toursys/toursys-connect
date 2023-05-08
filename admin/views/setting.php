@@ -113,7 +113,7 @@ label {
 							<div class="col-3">
 								<label for="">API Token</label>
 							</div>
-							<div class="col-9">
+							<div class="col-9" style="word-wrap:break-word;">
 								<span class="get-value" id="api-token"><?php echo esc_attr($toursysApiToken); ?></span>
 							</div>
 						</div>
