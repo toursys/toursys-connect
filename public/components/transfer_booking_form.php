@@ -97,7 +97,7 @@ $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_
 				<input type="hidden" id="toursys-transfer-transfer-type" class="toursys-transfer-transfer-type" name="transfer-type" value="<?php print esc_attr($transferType); ?>" />
 				<input type="hidden" id="toursys-transfer-max-adults" class="toursys-transfer-max-adults" name="max-adults" value="<?php print esc_attr($maxAdults); ?>" />
 				<input type="hidden" id="toursys-transfer-max-children" class="toursys-transfer-max-children" name="max-children" value="<?php print esc_attr($maxChildren); ?>" />
-				<input type="hidden" id="toursys-key" class="toursys-key" name="key" value="<?php print esc_attr(get_option)("toursys-api-token");?>">
+				<input type="hidden" id="toursys-key" class="toursys-key" name="key" value="<?php print get_option("toursys-api-token"); ?>">
 			
     			<button type="button" id="toursys-submit" class="toursys-button toursys-submit toursys-booking-button" style="background-color:<?php print esc_attr($foreColor); ?>;  color: <?php print esc_attr($buttonTextColor); ?> !important;" id="toursys-booking-button"><?php print esc_attr($buttonText); ?></button>
     		</div>
