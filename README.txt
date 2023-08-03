@@ -1,10 +1,10 @@
 === TourSys Connect ===
 Contributors: TourSys
 Tags: booking, booking system, reservation, reservation system, travel agency, tour operator, online booking
-Requires at least: 4.7
-Tested up to: 6.2
-Stable tag: 1.2.9
-Requires PHP: 7.0
+Requires at least: 5.6
+Tested up to: 6.2.2
+Stable tag: 1.3.0
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Allows visitors to your website to make tour and transfer bookings directly into
