@@ -1,7 +1,7 @@
 === TourSys Connect ===
 Contributors: TourSys
 Tags: booking, booking system, reservation, reservation system, travel agency, tour operator, online booking
-Requires at least: 5.4
+Requires at least: 5.6
 Tested up to: 6.2.2
 Stable tag: 1.3.0
 Requires PHP: 7.4
