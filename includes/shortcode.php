@@ -115,7 +115,8 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
             'secondary-color' => "",
             'text-font' => "",
             'text-color' => "",
-            'button-text-color' => ""
+            'button-text-color' => "",
+            'open-agency-login' => "false"
         ),
         $atts
      );
@@ -132,6 +133,8 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
     $foreColor = get_option("toursys-primary-color");
     $textColor = get_option("toursys-text-color");
     $buttonTextColor = get_option("toursys-button-text-color");
+
+    $openAgencyLogin = $attributes['open-agency-login'];
 
     if($attributes['default-adults'] == ""){
         $defaultAdults = 2;
@@ -155,6 +158,10 @@ function toursys_create_tour_booking_button($atts = array(), $content = null, $t
 
     if($attributes['text-font'] != ""){
         $textFont = $attributes['text-font'];
+    }
+
+    if($attributes['button-text-color'] != ""){
+        $buttonTextColor = $attributes['button-text-color'];
     }
 
     if($attributes['button-text-color'] != ""){
@@ -193,7 +200,8 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
             'text-font' => "",
             'text-color' => "",
             'button-text-color' => "",
-            'header-text' => "Book Tour Tour Today"
+            'header-text' => "Book Tour Tour Today",
+            'open-agency-login' => "false"
         ),
         $atts
 
@@ -279,6 +287,8 @@ function toursys_create_tour_booking_form($atts = array(), $content = null, $tag
         $headerText = $attributes['header-text'];
     }
 
+    $openAgencyLogin = $attributes['open-agency-login'];
+
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/tour_booking_form.php");
     $output = ob_get_clean();
@@ -308,7 +318,8 @@ function toursys_create_transfer_booking_button($atts = array(), $content = null
             'secondary-color' => "",
             'text-font' => "",
             'text-color' => "",
-            'button-text-color' => ""
+            'button-text-color' => "",
+            'open-agency-login' => "false"
         ),
         $atts
     );
@@ -355,6 +366,8 @@ function toursys_create_transfer_booking_button($atts = array(), $content = null
         $buttonTextColor = $attributes['button-text-color'];
     }
 
+    $openAgencyLogin = $attributes['open-agency-login'];
+
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/transfer_booking_button.php");
     $output = ob_get_clean();
@@ -387,7 +400,8 @@ function toursys_create_transfer_booking_form($atts = array(), $content = null, 
             'text-font' => "",
             'text-color' => "",
             'button-text-color' => "",
-            'header-text' => "Book Your Transfer Today"
+            'header-text' => "Book Your Transfer Today",
+            'open-agency-login' => "false"
         ),
         $atts
 
@@ -496,6 +510,8 @@ function toursys_create_transfer_booking_form($atts = array(), $content = null, 
         $headerText = $attributes['header-text'];
     }
 
+    $openAgencyLogin = $attributes['open-agency-login'];
+
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/transfer_booking_form.php");
     $output = ob_get_clean();
@@ -525,7 +541,8 @@ function toursys_create_package_booking_button($atts = array(), $content = null,
             'secondary-color' => "",
             'text-font' => "",
             'text-color' => "",
-            'button-text-color' => ""
+            'button-text-color' => "",
+            'open-agency-login' => "false"
         ),
         $atts
     );
@@ -572,6 +589,8 @@ function toursys_create_package_booking_button($atts = array(), $content = null,
         $buttonTextColor = $attributes['button-text-color'];
     }
 
+    $openAgencyLogin = $attributes['open-agency-login'];
+
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/package_booking_button.php");
     $output = ob_get_clean();
@@ -602,7 +621,8 @@ function toursys_create_package_booking_form($atts = array(), $content = null, $
             'text-font' => "",
             'text-color' => "",
             'button-text-color' => "",
-            'header-text' => "Book Your Package Today"
+            'header-text' => "Book Your Package Today",
+            'open-agency-login' => "false"
         ),
         $atts
 
@@ -691,6 +711,8 @@ function toursys_create_package_booking_form($atts = array(), $content = null, $
     if($attributes['header-text'] != ""){
         $headerText = $attributes['header-text'];
     }
+
+    $openAgencyLogin = $attributes['open-agency-login'];
 
     ob_start();
     include(plugin_dir_path(dirname(__FILE__))  . "public/components/package_booking_form.php");

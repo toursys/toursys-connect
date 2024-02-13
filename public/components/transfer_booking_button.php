@@ -1,7 +1,10 @@
 <div id="toursys">
 <?php
 $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_ENGINE_URL_DEV : TOURSYS_BOOKING_ENGINE_URL);
-$params = json_encode(array("productId" => $productId, "adults" => $defaultAdults, "children" => $defaultChildren, "tripType" => $tripType, "transferType" => $transferType));
+
+$openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
+
+$params = json_encode(array("productId" => $productId, "adults" => $defaultAdults, "children" => $defaultChildren, "tripType" => $tripType, "transferType" => $transferType, "openAgencyLogin" => $openAgencyLogin));
 
 ?>
 <a id="transfer-booking-button-<?php print uniqid(); ?>" href="<?php print esc_url($tsbeUrl . "transfers/booking.php?key=" .   get_option("toursys-api-token") . "&q=" . toursysParamEncode($params)); ?>">

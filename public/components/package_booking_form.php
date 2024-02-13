@@ -2,6 +2,9 @@
 
 
 $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_ENGINE_URL_DEV : TOURSYS_BOOKING_ENGINE_URL);
+
+$openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
+
 ?>
 <div id="toursys" class="toursys-connect">
 
@@ -79,6 +82,7 @@ $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_
     			<input type="hidden" id="toursys-package-product-id" class="toursys-package-product-id" name="product-id" value="<?php echo esc_attr($productId); ?>" />
 				<input type="hidden" id="toursys-package-max-adults" class="toursys-package-max-adults" name="max-adults" value="<?php echo esc_attr($maxAdults); ?>" />
 				<input type="hidden" id="toursys-package-max-children" class="toursys-package-max-children" name="max-children" value="<?php echo esc_attr($maxChildren); ?>" />
+                <input type="hidden" id="toursys-package-agency-login-popup" class="toursys-package-agency-login-popup" name="open-agency-login" value="<?php echo $openAgencyLogin; ?>" />
                 <input type="hidden" id="toursys-key" class="toursys-key" name="key" value="<?php print get_option("toursys-api-token"); ?>">
     			<button type="button" id="toursys-submit" class="toursys-button toursys-submit toursys-booking-button" style="background-color:<?php echo esc_attr($foreColor); ?>;  color: <?php echo esc_attr($buttonTextColor); ?> !important;" id="toursys-booking-button"><?php echo esc_attr($buttonText); ?></button>
     		</div>

@@ -3,7 +3,10 @@
 <?php
 
 $tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_ENGINE_URL_DEV : TOURSYS_BOOKING_ENGINE_URL);
-$params = json_encode(array("productId" => $productId, "adults" => $defaultAdults, "children" => $defaultChildren, "tripDate" => $defaultDate));
+
+$openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
+
+$params = json_encode(array("productId" => $productId, "adults" => $defaultAdults, "children" => $defaultChildren, "tripDate" => $defaultDate, "openAgencyLogin" => $openAgencyLogin));
 
 ?>
     <a id="tour-booking-button-<?php print uniqid(); ?> ?>" href="<?php echo esc_url($tsbeUrl . "tours/booking.php?key=" .   get_option("toursys-api-token") . "&q=" . toursysParamEncode($params)); ?>">

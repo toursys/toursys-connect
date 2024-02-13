@@ -48,6 +48,7 @@ jQuery(function($){
 				let maxAdults = $(currentForm).find('.toursys-tour-max-adults').val();
 				let maxChilds = $(currentForm).find('.toursys-tour-max-children').val();
 				let tripDate = $(currentForm).find('.toursys-tour-trip-date').val();
+				let openAgencyLogin = $(currentForm).find('.toursys-tour-agency-login-popup').val();
 
 				params = {
 					"productId" : productId,
@@ -55,7 +56,8 @@ jQuery(function($){
 					"children" : childs,
 					"maxAdults" : maxAdults,
 					"maxChildren" : maxChilds,
-					"tripDate" : tripDate
+					"tripDate" : tripDate,
+					"openAgencyLogin" : openAgencyLogin
 				};
 
 			}
@@ -68,6 +70,7 @@ jQuery(function($){
 				let maxChilds = $(currentForm).find('.toursys-transfer-max-children').val();
 				let tripType = $(currentForm).find('.toursys-transfer-trip-type').val();
 				let transferType = $(currentForm).find('.toursys-transfer-transfer-type').val();
+				let openAgencyLogin = $(currentForm).find('.toursys-transfer-agency-login-popup').val();
 				let arrivalDate = "";
 				let departureDate = "";
 
@@ -82,7 +85,8 @@ jQuery(function($){
 						"maxChildren" : maxChilds,
 						"arrivalDate" : arrivalDate,
 						"tripType" : tripType,
-						"transferType" : transferType
+						"transferType" : transferType,
+						"openAgencyLogin" : openAgencyLogin
 					};
 				}
 				else {
@@ -98,7 +102,8 @@ jQuery(function($){
 						"arrivalDate" : arrivalDate,
 						"departureDate" : departureDate,
 						"tripType" : tripType,
-						"transferType" : transferType
+						"transferType" : transferType,
+						"openAgencyLogin" : openAgencyLogin
 					};
 				}
 
@@ -112,6 +117,7 @@ jQuery(function($){
 				let maxAdults = $(currentForm).find('.toursys-package-max-adults').val();
 				let maxChilds = $(currentForm).find('.toursys-package-max-children').val();
 				let tripDate = $(currentForm).find('.toursys-package-trip-date').val();
+				let openAgencyLogin = $(currentForm).find('.toursys-package-agency-login-popup').val();
 
 				params = {
 					"productId" : productId,
@@ -119,7 +125,8 @@ jQuery(function($){
 					"children" : childs,
 					"maxAdults" : maxAdults,
 					"maxChildren" : maxChilds,
-					"tripDate" : tripDate
+					"tripDate" : tripDate,
+					"openAgencyLogin" : openAgencyLogin
 				};
 
 			}

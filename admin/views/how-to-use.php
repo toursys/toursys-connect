@@ -40,6 +40,7 @@ jQuery(document).ready(function($) {
                             default-adults="2"
                             default-children="0"
                             default-date="DD/MM/YYYY"
+                            open-agency-login="true"
                         ]
                         </code>
                         <br>
@@ -59,6 +60,9 @@ jQuery(document).ready(function($) {
                         <p>Pre-selected number of children upon landing on booking page.</p>
                         <p class="parameter">default-date</p>
                         <p>Fix the date sent to the booking page so the tour can only be booked for that exact date. Useful for collective tours which begin on a specific date. Note that the date format must be Day, Month, Year:  DD/MM/YYYY (eg:  25/12/2022).</p>
+                        <p class="parameter">open-agency-login</p>
+                        <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
+
 
 
                         <hr class="hr">
@@ -82,6 +86,7 @@ jQuery(document).ready(function($) {
                             header-text="Make Booking Now"
                             text-color="#000000"
                             button-text-color="#ffffff"
+                            open-agency-login="true"
                         ]
                         </code>
                         <br>
@@ -114,6 +119,8 @@ jQuery(document).ready(function($) {
                                 <p>Color of text on form label.</p>
                                 <p class="parameter">button-text-color</p>
                                 <p>Color of text on button.</p>
+                                <p class="parameter">open-agency-login</p>
+                                <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
 
                                 </td>
                                 <td width="40%">
@@ -151,6 +158,7 @@ jQuery(document).ready(function($) {
                             default-children="0"
                             primary-color="#6699CC"
                             secondary-color="#6699FF"
+                            open-agency-login="true"
                         ]
                         </code>
 
@@ -175,6 +183,8 @@ jQuery(document).ready(function($) {
                         <p>Background color button when hovering.</p>
                         <p class="parameter">default-date</p>
                         <p>the default-date parameter is NOT supported in the short code for transfer-booking-button or transfer-booking-form.</p>
+                        <p class="parameter">open-agency-login</p>
+                        <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
 
 
                         <hr class="hr">
@@ -199,6 +209,7 @@ jQuery(document).ready(function($) {
                             secondary-color="#6699FF"
                             text-color="#000000"
                             button-text-color="#ffffff"
+                            open-agency-login="true"
                         ]
                         </code>
                         <br>
@@ -235,6 +246,9 @@ jQuery(document).ready(function($) {
                                 <p>Color of text on button.</p>
                                 <p class="parameter">default-date</p>
                                 <p>the default-date parameter is NOT supported in the short code for transfer-booking-button or transfer-booking-form.</p>
+                                <p class="parameter">open-agency-login</p>
+                                <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
+
                                 </td>
                                 <td width="40%">
                                     <img style="width:400px;" src="<?php print plugin_dir_url(dirname( __DIR__ )) . 'admin/images/example-setting.png'; ?>"/>
@@ -265,6 +279,7 @@ jQuery(document).ready(function($) {
                             default-adults="2"
                             default-children="0"
                             default-date="DD/MM/YYYY"
+                            open-agency-login="true"
                             ]
                         </code>
                         <br>
@@ -284,6 +299,8 @@ jQuery(document).ready(function($) {
                         <p>Pre-selected number of children upon landing on booking page.</p>
                         <p class="parameter">default-date</p>
                         <p>Fix the date sent to the booking page so the package can only be booked for that exact date. Useful for collective packages which begin on a specific date. Note that the date format must be Day, Month, Year:  DD/MM/YYYY (eg:  25/12/2022).</p>
+                        <p class="parameter">open-agency-login</p>
+                        <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
 
 
                         <hr class="hr">
@@ -307,6 +324,7 @@ jQuery(document).ready(function($) {
                             header-text="Make Booking Now"
                             text-color="#000000"
                             button-text-color="#ffffff"
+                            open-agency-login="true"
                             ]
                         </code>
                         <br>
@@ -339,6 +357,9 @@ jQuery(document).ready(function($) {
                                     <p>Color of text on form label.</p>
                                     <p class="parameter">button-text-color</p>
                                     <p>Color of text on button.</p>
+                                    <p class="parameter">open-agency-login</p>
+                                    <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
+
 
                                 </td>
                                 <td width="40%">
