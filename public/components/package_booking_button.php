@@ -1,7 +1,16 @@
 
 <div id="toursys">
 <?php
-$tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_ENGINE_URL_DEV : TOURSYS_BOOKING_ENGINE_URL);
+
+if(strpos(get_option("home"), DEV_WEBSITE) == true){
+    $tsbeUrl = TOURSYS_BOOKING_ENGINE_URL_DEV;
+}
+else if(strpos(get_option("home"), LOCAL_WEBSITE) == true){
+    $tsbeUrl = TOURSYS_BOOKING_ENGINE_URL_LOCAL;
+}
+else{
+    $tsbeUrl = TOURSYS_BOOKING_ENGINE_URL;
+}
 
 $openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
 

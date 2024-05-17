@@ -325,6 +325,7 @@ jQuery(document).ready(function($) {
                             text-color="#000000"
                             button-text-color="#ffffff"
                             open-agency-login="true"
+                            single-supplement="true"
                             ]
                         </code>
                         <br>
@@ -359,6 +360,8 @@ jQuery(document).ready(function($) {
                                     <p>Color of text on button.</p>
                                     <p class="parameter">open-agency-login</p>
                                     <p>When true, the agency login popup will automatically appear every time a user clicks to open the TourSys Booking page. When not included in the shortcode, the parameter defaults to false.</p>
+                                    <p class="parameter">single-supplement</p>
+                                    <p>When true, the Single Supplement field will appear on the Package Booking Form. When not included in the shortcode, the parameter defaults to false.</p>
 
 
                                 </td>

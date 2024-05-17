@@ -5,19 +5,23 @@ error_reporting(E_ALL);
 
 
 $toursysApiParams = array("key" => get_option('toursys-api-key'), "system" => "TOURSYS");
-$toursysApiUrl = (strpos(get_option("home"),  DEV_WEBSITE) !== false ? "https://api-v3.dev.toursys.asia/" : TOURSYS_API_URL);
+$toursysApiUrl = (strpos(get_option("home"),  DEV_WEBSITE) !== false ? TOURSYS_API_URL_DEV : TOURSYS_API_URL);
+$toursysApiUrl = (strpos(get_option("home"),  LOCAL_WEBSITE) !== false ? TOURSYS_API_URL_LOCAL : TOURSYS_API_URL);
 
 //$response = callAPI("GET", $toursysApiUrl, $toursysApiParams);
 $toursysResponse = array();
 $toursysGetToken = "";
 
-if(!empty(get_option('toursys-api-key'))){
+
+
+if(empty(get_option('toursys-api-key'))){
 
     $getTokenUrl = $toursysApiUrl . "auth/getToken?key=" . get_option('toursys-api-key') . "&system=TOURSYS";
     $toursysResponse = wp_remote_retrieve_body(wp_remote_get($getTokenUrl));
     // echo "<pre>";
     // die(print_r(array($toursysApiUrl, $toursysApiParams, $toursysResponse), true));
     $toursysGetToken = json_decode($toursysResponse);
+
 }
 
 
@@ -533,6 +537,7 @@ function toursys_create_package_booking_button($atts = array(), $content = null,
         array(
             'id' => uniqid(),
             'product-id' => 0,
+            'single-supplement' => "false",
             'button-text' => "Book Now",
             'default-adults' => "",
             'default-children' => "",
@@ -548,6 +553,7 @@ function toursys_create_package_booking_button($atts = array(), $content = null,
     );
 
     $productId = $attributes['product-id'];
+    $singleSupplement = $attributes['single-supplement'];
     $buttonText = $attributes['button-text'];
 
     $defaultAdults  = $attributes['default-adults'];
@@ -610,6 +616,7 @@ function toursys_create_package_booking_form($atts = array(), $content = null, $
         array(
             'id' => uniqid(),
             'product-id' => 0,
+            'single-supplement' => "false",
             'default-adults' => '',
             'default-children' => '',
             'default-date' => "",
@@ -629,17 +636,14 @@ function toursys_create_package_booking_form($atts = array(), $content = null, $
     );
 
     $productId = $attributes['product-id'];
+    $singleSupplement = $attributes['single-supplement'];
     $buttonText = $attributes['button-text'];
     $headerText = $attributes["header-text"];
 
     $defaultAdults  = $attributes['default-adults'];
     $defaultChildren  = $attributes['default-children'];
     $defaultDate = $attributes['default-date'];
-    $isDefaultDate = 0;
 
-    if($defaultDate != ""){
-        $isDefaultDate = 1;
-    }
 
     $maxAdults = get_option("toursys-max-adults");
     $maxChildren = get_option("toursys-max-children");

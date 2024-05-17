@@ -2,6 +2,7 @@
 
 	$(document).ready(function(){
 
+;
 		$(".toursys-datepicker").datepicker({
 			minDate: 0,
 			dateFormat: 'dd/mm/yy',

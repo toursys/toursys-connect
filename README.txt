@@ -2,8 +2,8 @@
 Contributors: TourSys
 Tags: booking, booking system, reservation, reservation system, travel agency, tour operator, online booking
 Requires at least: 5.6
-Tested up to: 6.4.3
-Stable tag: 1.3.1
+Tested up to: 6.5.2
+Stable tag: 1.3.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

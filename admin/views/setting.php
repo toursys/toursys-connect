@@ -274,7 +274,17 @@ label {
 
     		if(apiKey != ""){
 
-    			let apiUrl = "<?php echo (strpos(get_option("home"), "gotophuket.net") !== false ? "https://api-v3.dev.toursys.asia/" : TOURSYS_API_URL);?>";
+    			let apiUrl = "<?php
+                    if(strpos(get_option("home"), DEV_WEBSITE) !== false){
+                        print TOURSYS_API_URL_DEV;
+                    }
+                    else if(strpos(get_option("home"), LOCAL_WEBSITE) !== false){
+                        print "http://localhost:8081/";
+                    }
+                    else{
+                        print TOURSYS_API_URL;
+                    }
+                ?>";
 
 	    		$.ajax({
 					url: apiUrl + "auth/getToken",

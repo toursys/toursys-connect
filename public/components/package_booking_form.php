@@ -1,9 +1,15 @@
 <?php
 
 
-$tsbeUrl = (strpos(get_option("home"), DEV_WEBSITE) !== false ? TOURSYS_BOOKING_ENGINE_URL_DEV : TOURSYS_BOOKING_ENGINE_URL);
-
-$openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
+if(strpos(get_option("home"), DEV_WEBSITE) == true){
+    $tsbeUrl = TOURSYS_BOOKING_ENGINE_URL_DEV;
+}
+else if(strpos(get_option("home"), LOCAL_WEBSITE) == true){
+    $tsbeUrl = TOURSYS_BOOKING_ENGINE_URL_LOCAL;
+}
+else{
+    $tsbeUrl = TOURSYS_BOOKING_ENGINE_URL;
+}
 
 ?>
 <div id="toursys" class="toursys-connect">
@@ -28,11 +34,9 @@ $openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
     	<div class="wrap">
     		<div class="col">
     			<label style="color: <?php print esc_attr($textColor); ?> !important;">Trip Date: </label>
-                <?php if($isDefaultDate == 1){ ?>
-                    <input type="text" class="toursys-package-trip-date" value="<?php echo esc_attr($defaultDate);?>" name="trip-date" id="toursys-package-trip-date" placeholder="Trip Date" readonly="true" required="required" disabled="disabled"  />
-                <?php }else { ?>
-    			    <input type="text" class="toursys-datepicker toursys-package-trip-date" value="<?php echo esc_attr($defaultDate);?>"  name="trip-date" id="toursys-package-trip-date" placeholder="Trip Date" readonly="true" required="required" />
-    		    <?php } ?>
+
+                    <input type="text" class="toursys-datepicker toursys-package-trip-date"  name="trip-date" id="toursys-package-trip-date" placeholder="Trip Date" readonly="true" required="required"  />
+
             </div>
     	</div>
     	<div class="wrap">
@@ -74,6 +78,30 @@ $openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
         	</div>
 
     	</div>
+        <?php if($singleSupplement == "true"){ ?>
+        <div class="wrap">
+            <div class="col">
+                <label style="color: <?php print esc_attr($textColor); ?> !important;">No. of Single Supplements: </label>
+
+                <select name="adults" id="toursys-package-single-supplements" class="toursys-package-single-supplements">
+                    <?php
+                    for($i = 1; $i <= $maxAdults; $i++){
+                        if($i == $defaultAdults){
+                            print "<option value='" . $i . "' selected>" . $i . "</option>\n";
+                        }
+                        else {
+                            print "<option value='" . $i . "'>" . $i . "</option>\n";
+                        }
+                    }
+                    ?>
+                </select>
+
+            </div>
+        </div>
+        <?php
+            }
+            ?>
+
 
     	<div class="wrap">
     		<div class="col">
@@ -86,6 +114,7 @@ $openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
                 <input type="hidden" id="toursys-key" class="toursys-key" name="key" value="<?php print get_option("toursys-api-token"); ?>">
     			<button type="button" id="toursys-submit" class="toursys-button toursys-submit toursys-booking-button" style="background-color:<?php echo esc_attr($foreColor); ?>;  color: <?php echo esc_attr($buttonTextColor); ?> !important;" id="toursys-booking-button"><?php echo esc_attr($buttonText); ?></button>
     		</div>
+            <br>
     		<div class="text-right toursys-brand">
     			Powered by <a href="https://toursys.asia">TourSys</a>
     		</div>
@@ -130,7 +159,5 @@ $openAgencyLogin = ($openAgencyLogin == "true") ?  1 : 0;
 }
 </style>
 <script>
-$(document).ready(function(){
 
-});
 </script>
