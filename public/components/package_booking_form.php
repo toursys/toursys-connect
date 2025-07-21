@@ -83,15 +83,10 @@ else{
             <div class="col">
                 <label style="color: <?php print esc_attr($textColor); ?> !important;">No. of Single Supplements: </label>
 
-                <select name="adults" id="toursys-package-single-supplements" class="toursys-package-single-supplements">
+                <select name="single-supplement" id="toursys-package-single-supplements" class="toursys-package-single-supplements">
                     <?php
-                    for($i = 1; $i <= $maxAdults; $i++){
-                        if($i == $defaultAdults){
-                            print "<option value='" . $i . "' selected>" . $i . "</option>\n";
-                        }
-                        else {
-                            print "<option value='" . $i . "'>" . $i . "</option>\n";
-                        }
+                    for($i = 0; $i <= $maxAdults; $i++){
+                        print "<option value='" . $i . "'>" . $i . "</option>\n";
                     }
                     ?>
                 </select>

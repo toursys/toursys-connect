@@ -113,6 +113,7 @@ jQuery(function($){
 
 				let adults = $(currentForm).find('.toursys-package-adults').val();
 				let childs = $(currentForm).find('.toursys-package-children').val();
+				let singleSupplement = $(currentForm).find('.toursys-package-single-supplements').val();
 				let productId = $(currentForm).find('.toursys-package-product-id').val();
 				let maxAdults = $(currentForm).find('.toursys-package-max-adults').val();
 				let maxChilds = $(currentForm).find('.toursys-package-max-children').val();
@@ -122,6 +123,7 @@ jQuery(function($){
 				params = {
 					"productId" : productId,
 					"adults" : adults,
+					"single_supplement": singleSupplement,
 					"children" : childs,
 					"maxAdults" : maxAdults,
 					"maxChildren" : maxChilds,
